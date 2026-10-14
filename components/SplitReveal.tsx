@@ -7,58 +7,37 @@ type Props = {
   text: string;
   className?: string;
   wordClassName?: string;
-  mode?: "words" | "chars";
   delay?: number;
   stagger?: number;
   inView?: boolean;
 };
 
-const item: Variants = {
-  hidden: { y: "110%", rotate: 6, opacity: 0, filter: "blur(8px)" },
-  show: {
-    y: "0%",
-    rotate: 0,
-    opacity: 1,
-    filter: "blur(0px)",
-    transition: { type: "spring", stiffness: 120, damping: 18, mass: 0.8 },
-  },
+const EASE = [0.22, 1, 0.36, 1] as const;
+
+const word: Variants = {
+  hidden: { y: "105%" },
+  show: { y: "0%", transition: { duration: 1.1, ease: EASE } },
 };
 
-/** Maskeli satırlardan kelime kelime / harf harf kayarak giren metin. */
-export function SplitReveal({
-  text,
-  className,
-  wordClassName,
-  mode = "words",
-  delay = 0,
-  stagger = 0.06,
-  inView = false,
-}: Props) {
+/** Taşması gizlenmiş satırlardan kelime kelime alttan yükselen (masked) metin. */
+export function SplitReveal({ text, className, wordClassName, delay = 0, stagger = 0.07, inView = false }: Props) {
   const words = text.split(" ");
   const container: Variants = {
     hidden: {},
     show: { transition: { staggerChildren: stagger, delayChildren: delay } },
   };
   const trigger = inView
-    ? { initial: "hidden" as const, whileInView: "show" as const, viewport: { once: true, margin: "-10% 0px" } }
+    ? { initial: "hidden" as const, whileInView: "show" as const, viewport: { once: true, margin: "-12% 0px" } }
     : { initial: "hidden" as const, animate: "show" as const };
 
   return (
     <motion.span aria-label={text} role="text" className={cn("inline", className)} variants={container} {...trigger}>
-      {words.map((word, wi) => (
-        <span key={wi} aria-hidden className="inline-block overflow-hidden pb-[0.14em] align-bottom">
-          {mode === "words" ? (
-            <motion.span variants={item} className={cn("inline-block will-change-transform", wordClassName)}>
-              {word}
-            </motion.span>
-          ) : (
-            word.split("").map((ch, ci) => (
-              <motion.span key={ci} variants={item} className={cn("inline-block will-change-transform", wordClassName)}>
-                {ch}
-              </motion.span>
-            ))
-          )}
-          {wi < words.length - 1 && <span className="inline-block">&nbsp;</span>}
+      {words.map((w, i) => (
+        <span key={i} aria-hidden className="-mt-[0.18em] inline-block overflow-hidden pb-[0.08em] pt-[0.18em] align-bottom">
+          <motion.span variants={word} className={cn("inline-block will-change-transform", wordClassName)}>
+            {w}
+          </motion.span>
+          {i < words.length - 1 && <span className="inline-block">&nbsp;</span>}
         </span>
       ))}
     </motion.span>

@@ -3,5 +3,8 @@ node_modules
 out
 next-env.d.ts
 *.tsbuildinfo
+# Ortam değişkenleri / gizli bilgiler (SMTP_PASS vb.) — asla commit edilmez
+.env
+.env.local
 .env*.local
 .vercel

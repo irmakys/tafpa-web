@@ -23,13 +23,14 @@ const mono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Tafpa — DKT Klinikleri için White-Label Terapi Ekosistemi",
+  title: "Tafpa — Bespoke Software & Product Studio",
   description:
-    "Kliniklerinizi kağıt ve WhatsApp karmaşasından kurtaran, kendi markanızla danışanlarınıza ulaşan yeni nesil terapi ekosistemi.",
+    "Özel mobil uygulamalar ve ileri düzey web sistemleri geliştiren butik dijital ürün stüdyosu.",
+  metadataBase: new URL("https://tafpa.company"),
 };
 
 export const viewport: Viewport = {
-  themeColor: "#030712",
+  themeColor: "#050505",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

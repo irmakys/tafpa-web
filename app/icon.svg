@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="hex" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#605cf2"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="#050505"/>
+  <!-- dolu altıgen -->
+  <polygon points="5,22 12,10 26,10 33,22 26,34 12,34" fill="url(#hex)"/>
+  <!-- çerçeveli altıgen + T -->
+  <polygon points="22,40 30,26 46,26 54,40 46,54 30,54" fill="#050505" stroke="#605cf2" stroke-width="2"/>
+  <path d="M28 32h20v5h-7.5v15h-5V37H28z" fill="#ffffff"/>
+</svg>

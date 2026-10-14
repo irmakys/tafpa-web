@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 :root {
-  --bg: #09090b;
-  --bg-deep: #030712;
+  --bg: #080808;
+  --bg-deep: #050505;
   --mx: 50vw;
   --my: 30vh;
 }
@@ -19,8 +19,8 @@
     text-rendering: optimizeLegibility;
   }
   ::selection {
-    background: rgba(139, 92, 246, 0.45);
-    color: #fff;
+    background: rgba(255, 255, 255, 0.85);
+    color: #050505;
   }
   /* Custom cursor only on precise pointers */
   @media (pointer: fine) {
@@ -33,24 +33,31 @@
 
 @layer components {
   .glass {
-    @apply border border-white/[0.07] bg-white/[0.03] backdrop-blur-xl;
+    @apply border border-white/[0.08] bg-white/[0.025] backdrop-blur-xl;
     box-shadow:
       inset 0 1px 0 0 rgba(255, 255, 255, 0.05),
       0 20px 60px -30px rgba(0, 0, 0, 0.8);
   }
   .hairline {
-    @apply border border-white/[0.06];
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  .titanium-frame {
+    background: linear-gradient(145deg, #e4e4e7 0%, #71717a 18%, #27272a 45%, #a1a1aa 70%, #3f3f46 100%);
   }
   .text-gradient {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(120deg, #fff 0%, #c4b5fd 35%, #67e8f9 70%, #fff 100%);
+    background-image: linear-gradient(110deg, #6b6b70 0%, #f4f4f5 30%, #8e8e93 55%, #ffffff 75%, #6b6b70 100%);
     background-size: 200% 100%;
+    /* bg-clip:text yalnızca kutu içini boyar; İ/Ö/Ü noktaları kutudan taşar -> boyama payı */
+    padding-block: 0.2em;
+    margin-block: -0.2em;
   }
   .eyebrow {
-    @apply inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-3 py-1 font-mono text-[11px] uppercase tracking-[0.2em] text-zinc-400 backdrop-blur;
+    @apply inline-flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.28em] text-titanium-400;
   }
   .section-title {
-    @apply font-display text-4xl font-semibold leading-[1.02] tracking-tightest text-white sm:text-5xl lg:text-6xl;
+    @apply font-display font-light leading-[0.95] tracking-hyper text-white;
+    font-size: clamp(2.75rem, 7vw, 7.5rem);
   }
 }
 

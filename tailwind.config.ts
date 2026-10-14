@@ -6,16 +6,19 @@ const config: Config = {
     extend: {
       colors: {
         ink: {
-          950: "#030712",
-          900: "#09090b",
-          800: "#111114",
-          700: "#18181c",
+          950: "#050505",
+          900: "#080808",
+          800: "#0e0e0f",
+          700: "#161617",
         },
-        neon: {
-          violet: "#8b5cf6",
-          cyan: "#22d3ee",
-          lime: "#a3e635",
-          rose: "#fb7185",
+        titanium: {
+          50: "#f4f4f5",
+          200: "#d4d4d8",
+          300: "#b4b4b8",
+          400: "#8e8e93",
+          500: "#6b6b70",
+          600: "#48484c",
+          700: "#2c2c2e",
         },
       },
       fontFamily: {
@@ -26,6 +29,7 @@ const config: Config = {
       },
       letterSpacing: {
         tightest: "-0.055em",
+        hyper: "-0.07em",
       },
       backgroundImage: {
         "grid-fade":
@@ -47,6 +51,9 @@ const config: Config = {
         "spin-slow": {
           to: { transform: "rotate(360deg)" },
         },
+        dash: {
+          to: { strokeDashoffset: "-40" },
+        },
         "shimmer-bg": {
           "0%": { backgroundPosition: "0% 50%" },
           "100%": { backgroundPosition: "200% 50%" },
@@ -57,7 +64,8 @@ const config: Config = {
         float: "float 7s ease-in-out infinite",
         marquee: "marquee 40s linear infinite",
         "spin-slow": "spin-slow 14s linear infinite",
-        "shimmer-bg": "shimmer-bg 6s linear infinite",
+        "shimmer-bg": "shimmer-bg 8s linear infinite",
+        dash: "dash 2.4s linear infinite",
       },
     },
   },

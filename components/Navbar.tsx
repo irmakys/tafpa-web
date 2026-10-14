@@ -5,18 +5,17 @@ import { motion, useMotionValueEvent, useScroll } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { TafpaLogo } from "./TafpaLogo";
 import { useLenis } from "./SmoothScroll";
-import { useDemo } from "./DemoModal";
+import { useProjectModal } from "./ProjectModal";
 
 const links = [
-  { href: "#white-label", label: "White-Label" },
-  { href: "#karsilastirma", label: "Kaos vs Düzen" },
-  { href: "#ozellikler", label: "Özellikler" },
-  { href: "#ses-odevi", label: "Ses Ödevleri" },
+  { href: "#manifesto", label: "Manifesto" },
+  { href: "#kabiliyetler", label: "Kabiliyetler" },
+  { href: "#erisim", label: "Erişim" },
 ];
 
 export function Navbar() {
   const lenis = useLenis();
-  const { open } = useDemo();
+  const { open } = useProjectModal();
   const { scrollY } = useScroll();
   const [hidden, setHidden] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -56,14 +55,14 @@ export function Navbar() {
                 href={l.href}
                 onClick={go(l.href)}
                 onPointerEnter={() => setActive(l.href)}
-                className="relative z-10 block px-4 py-2 text-sm text-zinc-400 transition-colors hover:text-white"
+                className="relative z-10 block px-4 py-2 text-[13px] text-titanium-400 transition-colors hover:text-white"
               >
                 {l.label}
               </a>
               {active === l.href && (
                 <motion.span
                   layoutId="nav-pill"
-                  className="absolute inset-0 rounded-full bg-white/[0.07]"
+                  className="absolute inset-0 rounded-full bg-white/[0.06]"
                   transition={{ type: "spring", stiffness: 350, damping: 30 }}
                 />
               )}
@@ -71,10 +70,11 @@ export function Navbar() {
           ))}
         </ul>
         <button
-          onClick={open}
-          className="group inline-flex items-center gap-1.5 rounded-full bg-white px-4 py-2 text-sm font-medium text-zinc-950 transition hover:bg-violet-200"
+          onClick={() => open()}
+          className="group inline-flex items-center gap-1.5 rounded-full bg-white px-4 py-2 text-sm font-medium text-zinc-950 transition hover:bg-titanium-200"
         >
-          Demo al
+          <span className="hidden sm:inline">Görüşme talep edin</span>
+          <span className="sm:hidden">Görüşme</span>
           <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
         </button>
       </nav>
