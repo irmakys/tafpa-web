@@ -18,7 +18,13 @@ export const PROJECT_TYPES: { id: ProjectType; label: string; icon: LucideIcon }
   { id: "custom", label: "Özel Yazılım", icon: Code2 },
 ];
 
-const BUDGETS = ["< 250K ₺", "250K – 750K ₺", "750K – 2M ₺", "2M ₺ +", "Henüz belirsiz"];
+const BUDGETS = [
+  "< 50.000 ₺",
+  "50.000 – 100.000 ₺",
+  "100.000 – 250.000 ₺",
+  "250.000 ₺+ / Özel kapsam",
+  "Henüz belirsiz",
+];
 
 type Ctx = { open: (preset?: ProjectType) => void };
 const ProjectContext = createContext<Ctx>({ open: () => {} });
